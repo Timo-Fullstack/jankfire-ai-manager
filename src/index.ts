@@ -100,7 +100,8 @@ export default {
       let aiResult: unknown;
       try {
         aiResult = await env.AI.run("anthropic/claude-fable-5", {
-          messages: [{ role: "user", content: data.prompt }]
+          messages: [{ role: "user", content: data.prompt }],
+          max_tokens: 1024,
         });
       } catch (err) {
         console.error("AI.run threw an error", err);
