@@ -99,7 +99,7 @@ export default {
       // Call the AI binding and guard against runtime errors
       let aiResult: unknown;
       try {
-        aiResult = await env.AI.run("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", {
+        aiResult = await env.AI.run("anthropic/claude-fable-5", {
           messages: [{ role: "user", content: data.prompt }]
         });
       } catch (err) {
