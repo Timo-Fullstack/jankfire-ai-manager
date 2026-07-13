@@ -99,7 +99,7 @@ export default {
       // Call the AI binding and guard against runtime errors
       let aiResult: unknown;
       try {
-        aiResult = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
+        aiResult = await env.AI.run("@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", {
           messages: [{ role: "user", content: data.prompt }]
         });
       } catch (err) {
