@@ -99,9 +99,8 @@ export default {
       // Call the AI binding and guard against runtime errors
       let aiResult: unknown;
       try {
-        aiResult = await env.AI.run("anthropic/claude-fable-5", {
+        aiResult = await env.AI.run("@cf/google/gemma-4-26b-a4b-it", {
           messages: [{ role: "user", content: data.prompt }],
-          max_tokens: 1024,
         });
       } catch (err) {
         console.error("AI.run threw an error", err);
