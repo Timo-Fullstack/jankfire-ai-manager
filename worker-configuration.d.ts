@@ -8021,7 +8021,7 @@ interface Ai_Cf_Qwen_Qwen3_30B_A3B_Fp8_Messages {
             type: string;
             /**
              * List of required parameter names.
-             */
+             */ASSETS
             required?: string[];
             /**
              * Definitions of each parameter.
@@ -11069,7 +11069,7 @@ interface IncomingRequestCfPropertiesTLSClientAuth {
     /**
      * The effective expiration date of the certificate
      *
-     * @example "Dec 22 19:39:00 2018 GMT"
+     * @example "Dec 22 19:39:00 2ASSETST"
      */
     certNotAfter: string;
 }
