@@ -34,13 +34,12 @@ class PrepareModeration {
 class Moderator {
 
 
-  static async ModerateChat(): Promise<string> {
+  static async ModerateChat(Chat :string): Promise<string> {
 
     const JankFireRules = await PrepareModeration.GetRules();
 
 
-    const ModerationPrompt: string = "You are a Moderator. The rules you HAVE to follow are:" + JankFireRules;
-
+    const ModerationPrompt: string = "You are a Moderator. The rules you HAVE to follow are:" + JankFireRules + Chat;
     return ModerationPrompt;
 
   };
@@ -65,7 +64,10 @@ export default {
       return new Response(null, { headers: CORS_HEADERS });
     }
 
-    const ModeratorResponse = await Moderator.ModerateChat();
+    const body = await request.json() as { prompt: string };
+    const Chat: string = body.prompt;
+
+    const ModeratorResponse = await Moderator.ModerateChat(Chat);
 
     return new Response(ModeratorResponse)
 
