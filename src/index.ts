@@ -1,4 +1,7 @@
 import RuleSetJSON from "./Configs/ruleset.json";
+import AiConfigJSON from "./Configs/models.json";
+import { env } from "cloudflare:workers";
+
 
 
 interface Env {
@@ -8,6 +11,38 @@ interface Env {
 interface AIRequest {
   prompt: string;
 }
+
+
+
+class AiCaller {
+
+  static async CallModerationModel(ModerationPrompt: string): Promise<string> {
+
+    const ModelName = AiConfigJSON.ModerationModel.ModelID
+    if (ModelName === "") {
+      return "!Failed"
+    }
+
+    // Call the actual Model
+    const response = await env.AI.run(ModelName, {
+      messages: [
+      { role: "user", content: ModerationPrompt }
+    ]
+    }) as { choices?: { message?: { content?: string } }[] };
+
+    const content = response?.choices?.[0]?.message?.content;
+
+
+    if (!content) {
+      return "!Failed";
+    } else {
+      return content
+    }
+
+
+  };
+};
+
 
 
 class PrepareModeration {
@@ -26,6 +61,8 @@ class PrepareModeration {
   };
 };
 
+
+
 class Moderator {
 
 
@@ -41,7 +78,9 @@ class Moderator {
       "Decide if any user violated the rules. Respond ONLY in this exact JSON shape, nothing else:\n" +
       '{ "target": "<username or null>", "reason": "<one of the rule categories, or null>", "ban_hours": <integer 1-72, or 0>, "needs_review": <true or false> }';
 
-    return ModerationPrompt;
+    const AIResponse = AiCaller.CallModerationModel(ModerationPrompt)
+
+    return AIResponse;
 
   }
 };
