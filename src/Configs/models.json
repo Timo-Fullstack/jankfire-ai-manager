@@ -1,5 +1,5 @@
 {
   "ModerationModel": {
-    "ModelID": "@cf/zai-org/glm-4.7-flash"
+    "ModelID": "@cf/google/gemma-4-26b-a4b-it"
   }
 }
