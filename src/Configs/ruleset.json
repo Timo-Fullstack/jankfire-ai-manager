@@ -14,6 +14,6 @@
     "reason": "Must cite one of the categories above by name, not a freeform explanation.",
     "ban_hours": "Integer, 1-72. Anything outside this range is invalid.",
     "target": "Must be a username present in the provided chat participant list. Targets outside this list are invalid.",
-    "needs_review": "Return a Integer of -1, It will trigger a human review automaticly"
+    "needs_review": "Return a boolean, True means that it needs a review, False means that it doesnt, Review is ment for extreme cases that needs human review"
   }
 }
