@@ -14,6 +14,23 @@ interface AIRequest {
 
 
 
+class Validator {
+
+  static stripCodeFences(raw: string): string {
+
+  return raw
+    .trim()
+    .replace(/^```json\s*/i, "")
+    .replace(/^```\s*/i, "")
+    .replace(/```\s*$/i, "")
+    .trim();
+
+  }
+}
+
+
+
+
 class AiCaller {
 
   static async CallModerationModel(ModerationPrompt: string): Promise<string> {
@@ -107,7 +124,9 @@ export default {
 
     const ModeratorResponse = await Moderator.ModerateChat(Chat);
 
-    return new Response(ModeratorResponse)
+    const StrippedJsonModeratorResponse = Validator.stripCodeFences(ModeratorResponse)
+
+    return new Response(StrippedJsonModeratorResponse)
 
     //return new Response("Internal error", { status: 500, headers: CORS_HEADERS });
   },
