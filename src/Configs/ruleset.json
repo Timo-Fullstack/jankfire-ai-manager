@@ -1,7 +1,8 @@
 {
   "core_principle": "Roast or get roasted — competitive trash talk, insults, and mockery are allowed and encouraged; the chat is 18+.",
   "bannable": {
-    "identity_harassment": "Targeting someone for who they are (race, orientation, gender identity, disability, etc.) is bannable regardless of phrasing.",
+    "racism": "Targeting someone based on race or ethnicity, including slurs, stereotypes, or racially motivated insults, is bannable regardless of phrasing.",
+    "identity_harassment": "Targeting someone for who they are (orientation, gender identity, disability, etc., excluding race which falls under racism) is bannable regardless of phrasing.",
     "grooming": "Any attempt to build inappropriate trust, isolate, or sexualize a minor is bannable and must be flagged as needs_review.",
     "threats": "Real-world threats of violence or credible self-harm threats toward another player must be flagged as needs_review.",
     "doxxing": "Sharing someone's real-world personal information without consent is bannable."
@@ -11,9 +12,10 @@
     "opinions_and_takes": "Mocking someone for a stated opinion or belief (e.g. flat earth) is not bannable — that's the chat working as intended."
   },
   "output_requirements": {
+    "violations": "An array. Create one entry per user who violated a rule. If multiple users violated rules in the same chat, list every one of them separately — do not pick only one.",
+    "target": "Must be a username present in the provided chat participant list. Targets outside this list are invalid.",
     "reason": "Must cite one of the categories above by name, not a freeform explanation.",
     "ban_hours": "Integer, 1-72. Anything outside this range is invalid.",
-    "target": "Must be a username present in the provided chat participant list. Targets outside this list are invalid.",
     "needs_review": "Return a boolean, True means that it needs a review, False means that it doesnt, Review is ment for extreme cases that needs human review"
   }
 }
