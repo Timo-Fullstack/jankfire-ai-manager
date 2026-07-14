@@ -11,29 +11,41 @@ interface AIRequest {
 
 
 class PrepareModeration {
+
+
   static async GetRules(): Promise<string> {
 
     const RulesetString = JSON.stringify(RuleSetJSON);
 
     if (RulesetString) {
-
       return RulesetString;
-
     };
 
     return "";
 
   };
+
+
+
+
+
 };
 
 class Moderator {
+
+
   static async ModerateChat(): Promise<string> {
 
     const JankFireRules = await PrepareModeration.GetRules();
 
-    return JankFireRules;
+
+    const ModerationPrompt: string = "You are a Moderator. The rules you HAVE to follow are:" + JankFireRules;
+
+    return ModerationPrompt;
 
   };
+
+  
 };
 
 
