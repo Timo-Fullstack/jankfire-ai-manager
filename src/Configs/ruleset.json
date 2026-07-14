@@ -1,0 +1,19 @@
+{
+  "core_principle": "Roast or get roasted — competitive trash talk, insults, and mockery are allowed and encouraged; the chat is 18+.",
+  "bannable": {
+    "identity_harassment": "Targeting someone for who they are (race, orientation, gender identity, disability, etc.) is bannable regardless of phrasing.",
+    "grooming": "Any attempt to build inappropriate trust, isolate, or sexualize a minor is bannable and must be flagged as needs_review.",
+    "threats": "Real-world threats of violence or credible self-harm threats toward another player must be flagged as needs_review.",
+    "doxxing": "Sharing someone's real-world personal information without consent is bannable."
+  },
+  "not_bannable": {
+    "skill_based_mockery": "Mocking someone's gameplay, decisions, or skill level is not bannable, no matter how harsh.",
+    "opinions_and_takes": "Mocking someone for a stated opinion or belief (e.g. flat earth) is not bannable — that's the chat working as intended."
+  },
+  "output_requirements": {
+    "reason": "Must cite one of the categories above by name, not a freeform explanation.",
+    "ban_hours": "Integer, 1-72. Anything outside this range is invalid.",
+    "target": "Must be a username present in the provided chat participant list. Targets outside this list are invalid.",
+    "needs_review": "Return a Integer of -1, It will trigger a human review automaticly"
+  }
+}
