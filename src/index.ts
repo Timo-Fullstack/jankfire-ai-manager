@@ -24,11 +24,6 @@ class PrepareModeration {
     return "";
 
   };
-
-
-
-
-
 };
 
 class Moderator {
@@ -47,9 +42,8 @@ class Moderator {
       '{ "target": "<username or null>", "reason": "<one of the rule categories, or null>", "ban_hours": <integer 1-72, or 0>, "needs_review": <true or false> }';
 
     return ModerationPrompt;
-  }
 
-  
+  }
 };
 
 
