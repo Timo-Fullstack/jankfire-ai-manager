@@ -1,14 +1,15 @@
 {
   "core_principle": "Roast or get roasted — competitive trash talk, insults, and mockery are allowed and encouraged; the chat is 18+.",
   "bannable": {
-    "racism": "Targeting someone based on race or ethnicity, including slurs, stereotypes, or racially motivated insults, is bannable regardless of phrasing. If the content includes calls for genocide, ethnic cleansing, or violence against a race/ethnicity, or agreement with such calls, it must be flagged as needs_review regardless of ban_hours given.",
-    "identity_harassment": "Targeting someone for who they are (orientation, gender identity, disability, etc., excluding race which falls under racism) is bannable regardless of phrasing.",
-    "grooming": "Any attempt to build inappropriate trust, isolate, or sexualize a minor is bannable and must be flagged as needs_review.",
-    "threats": "Real-world threats of violence or credible self-harm threats toward another player must be flagged as needs_review.",
-    "doxxing": "Sharing someone's real-world personal information without consent is bannable.",
-    "cheat_advertising": "Advertising cheats, hacks, aimbots, or exploits, including links to sites/services offering them, is bannable regardless of intent.",
-    "spam": "Repeating the same or near-identical message multiple times in the chat is bannable, regardless of content.",
-    "self_advertising": "Repeatedly promoting unrelated external content (own website, stream, social media, server, other product/service) in chat is bannable."
+  "racism": "Targeting someone based on race or ethnicity, including slurs, stereotypes, or racially motivated insults, is bannable regardless of phrasing. If the content includes calls for genocide, ethnic cleansing, or violence against a race/ethnicity, or agreement with such calls, it must be flagged as needs_review regardless of ban_hours given.",
+  "identity_harassment": "Targeting someone for who they are (orientation, gender identity, disability, etc., excluding race which falls under racism) is bannable regardless of phrasing.",
+  "grooming": "Any attempt to build inappropriate trust, isolate, or sexualize a minor is bannable and must be flagged as needs_review.",
+  "threats": "Real-world threats of violence or credible self-harm threats toward another player must be flagged as needs_review.",
+  "doxxing": "Sharing someone's real-world personal information without consent is bannable.",
+  "cheat_advertising": "Advertising cheats, hacks, aimbots, or exploits, including links to sites/services offering them, is bannable regardless of intent.",
+  "spam": "Repeating the same or near-identical message multiple times in the chat is bannable, regardless of content.",
+  "self_advertising": "Repeatedly promoting unrelated external content (own website, stream, social media, server, other product/service) in chat is bannable.",
+  "financial_exploitation": "Using information shared in chat (PINs, passwords, bank/payment details, account access) to access, spend, or steal real-world money or assets from another player, or manipulating someone into sharing such information for that purpose, is bannable and must always be flagged as needs_review, regardless of ban_hours given."
   },
   "not_bannable": {
     "skill_based_mockery": "Mocking someone's gameplay, decisions, or skill level is not bannable, no matter how harsh.",
