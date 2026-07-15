@@ -1,5 +1,5 @@
 {
   "ModerationModel": {
-    "ModelID": "@cf/google/gemma-4-26b-a4b-it"
+    "ModelID": "@cf/mistral/mistral-7b-instruct-v0.2-lora"
   }
 }

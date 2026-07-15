@@ -136,3 +136,6 @@ export default {
     //return new Response("Internal error", { status: 500, headers: CORS_HEADERS });
   },
 };
+
+
+// @cf/google/gemma-4-26b-a4b-it
