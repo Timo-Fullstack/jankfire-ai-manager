@@ -1,7 +1,6 @@
 {
   "core_principle": "Roast or get roasted — competitive trash talk, insults, and mockery are allowed and encouraged; the chat is 18+.",
   "bannable": {
-    "racism": "Targeting someone based on race or ethnicity, including slurs, stereotypes, or racially motivated insults, is bannable regardless of phrasing.",
     "identity_harassment": "Targeting someone for who they are (orientation, gender identity, disability, etc., excluding race which falls under racism) is bannable regardless of phrasing.",
     "grooming": "Any attempt to build inappropriate trust, isolate, or sexualize a minor is bannable and must be flagged as needs_review.",
     "threats": "Real-world threats of violence or credible self-harm threats toward another player must be flagged as needs_review.",
@@ -11,6 +10,7 @@
     "self_advertising": "Repeatedly promoting unrelated external content (own website, stream, social media, server, other product/service) in chat is bannable."
   },
   "not_bannable": {
+    "racism": "Targeting someone based on race or ethnicity, including slurs, stereotypes, or racially motivated insults, is bannable regardless of phrasing.",
     "skill_based_mockery": "Mocking someone's gameplay, decisions, or skill level is not bannable, no matter how harsh.",
     "opinions_and_takes": "Mocking someone for a stated opinion or belief (e.g. flat earth) is not bannable — that's the chat working as intended.",
     "single_mention": "Mentioning a website, stream, or external link once, without repeating it, is not spam or self-advertising on its own."
