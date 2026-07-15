@@ -1,7 +1,7 @@
 {
   "core_principle": "Roast or get roasted — competitive trash talk, insults, and mockery are allowed and encouraged; the chat is 18+.",
   "bannable": {
-    "racism": "Targeting someone based on race or ethnicity, including slurs, stereotypes, or racially motivated insults, is bannable regardless of phrasing.",
+    "racism": "Targeting someone based on race or ethnicity, including slurs, stereotypes, or racially motivated insults, is bannable regardless of phrasing. If the content includes calls for genocide, ethnic cleansing, or violence against a race/ethnicity, or agreement with such calls, it must be flagged as needs_review regardless of ban_hours given.",
     "identity_harassment": "Targeting someone for who they are (orientation, gender identity, disability, etc., excluding race which falls under racism) is bannable regardless of phrasing.",
     "grooming": "Any attempt to build inappropriate trust, isolate, or sexualize a minor is bannable and must be flagged as needs_review.",
     "threats": "Real-world threats of violence or credible self-harm threats toward another player must be flagged as needs_review.",
@@ -15,12 +15,18 @@
     "opinions_and_takes": "Mocking someone for a stated opinion or belief (e.g. flat earth) is not bannable — that's the chat working as intended.",
     "single_mention": "Mentioning a website, stream, or external link once, without repeating it, is not spam or self-advertising on its own."
   },
+  "severity_scaling": {
+    "minor": "1-6 hours. A single incidental slur or insult tucked into otherwise skill-based banter, not repeated, not the main focus of the message.",
+    "moderate": "12-24 hours. A clear, deliberate instance of harassment aimed squarely at someone's identity, or repeated minor instances in the same chat.",
+    "severe": "48-72 hours. Sustained, repeated, or aggressive targeting of someone's identity across multiple messages, or combined with other violations.",
+    "note": "Do not default to a flat mid-range number for every violation. Actually weigh how central, repeated, and deliberate the violation was before picking ban_hours within the 1-72 range."
+  },
   "output_requirements": {
     "violations": "An array. Create one entry per user who violated a rule. If multiple users violated rules in the same chat, list every one of them separately — do not pick only one.",
     "target": "Must be a username present in the provided chat participant list. Targets outside this list are invalid.",
     "category": "Must be one of the categories listed above under bannable.",
     "reason": "A short, specific, human-readable explanation of exactly what the user did and said, not just the category name.",
-    "ban_hours": "Integer, 1-72. Anything outside this range is invalid.",
-    "needs_review": "Integer of -1 to trigger automatic human review and an automatic 72-hour hold, applied at the chat level, not per-violation."
+    "ban_hours": "Integer, 1-72. Anything outside this range is invalid. See severity_scaling for guidance on picking within this range.",
+    "needs_review": "Boolean, set per individual violation (not per chat). True if that specific user's violation is severe enough to require human review per the rules above."
   }
 }
