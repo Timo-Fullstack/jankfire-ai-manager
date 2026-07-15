@@ -43,8 +43,8 @@ class AiCaller {
     // Call the actual Model
     const response = await env.AI.run(ModelName, {
       messages: [
-      { role: "user", content: ModerationPrompt }
-    ]
+      { role: "Moderator", content: ModerationPrompt }]
+
     }) as { choices?: { message?: { content?: string } }[] };
 
     const content = response?.choices?.[0]?.message?.content;
