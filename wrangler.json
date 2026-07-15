@@ -13,5 +13,12 @@
   "ai": {
     "binding": "AI"
   },
+  "d1_databases": [
+    {
+      "binding": "AccountsDB",
+      "database_id": "6217a294-8c23-4108-ac54-524a38b70f41",
+      "database_name": "jankfire-accounts"
+    }
+  ],
   "upload_source_maps": true
 }
