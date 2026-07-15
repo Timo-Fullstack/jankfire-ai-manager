@@ -18,26 +18,45 @@ interface Violation {
   category: string;
   reason: string;
   ban_hours: number;
+  needs_review: boolean;
 }
 
 interface ModerationResult {
   violations: Violation[];
-  needs_review: number;
 }
 
+
+
+
 class Validator {
-
   static stripCodeFences(raw: string): string {
-
-  return raw
-    .trim()
-    .replace(/^```json\s*/i, "")
-    .replace(/^```\s*/i, "")
-    .replace(/```\s*$/i, "")
-    .trim();
-
+    return raw.trim()
+      .replace(/^```json\s*/i, "")
+      .replace(/^```\s*/i, "")
+      .replace(/```\s*$/i, "")
+      .trim();
   }
 
+  static CheckBanHours(violations: Violation[]): Violation[] {
+    return violations.map(v => ({
+      ...v,
+      ban_hours: v.ban_hours > 72 ? 72 : v.ban_hours
+    }));
+  }
+}
+
+class Parser {
+  static ParseViolations(raw: string): Violation[] {
+    const cleaned = Validator.stripCodeFences(raw);
+    let parsed: { violations?: Violation[] };
+    try {
+      parsed = JSON.parse(cleaned);
+    } catch (err) {
+      console.error("Failed to parse moderation response", err);
+      return [];
+    }
+    return Array.isArray(parsed.violations) ? parsed.violations : [];
+  }
 }
 
 
@@ -92,7 +111,7 @@ class PrepareModeration {
 class Moderator {
 
 
-  static async ModerateChat(Chat: string): Promise<string> {
+  static async ModerateChat(Chat: string): Promise<Violation[]> {
     const JankFireRules = await PrepareModeration.GetRules();
 
     const ModerationPrompt: string = "You are a chat moderator for the game Jankfire. Follow these rules exactly:\n\n" +
@@ -110,10 +129,16 @@ class Moderator {
       "Respond ONLY in this exact JSON shape, nothing else:\n" +
       '{ "violations": [ { "target": "<username>", "category": "<one of the rule categories>", "reason": "<specific explanation of what they did>", "ban_hours": <integer 1-72>, "needs_review": true or false } ] }';
 
-      
-    const AIResponse = await AiCaller.CallModerationModel(ModerationPrompt)
+    
+    const AIResponse = await AiCaller.CallModerationModel(ModerationPrompt);
 
-    return AIResponse;
+    const StrippedJsonModeratorResponse = await Validator.stripCodeFences(AIResponse);
+
+    const ModeratorResponseArray = await Parser.ParseViolations(StrippedJsonModeratorResponse);
+
+    const ValidatedArray = await Validator.CheckBanHours(ModeratorResponseArray)
+
+    return ValidatedArray;
 
   }
 };
@@ -130,7 +155,7 @@ const CORS_HEADERS = {
 };
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<any> {
     if (request.method === "OPTIONS") {
       return new Response(null, { headers: CORS_HEADERS });
     }
@@ -140,10 +165,11 @@ export default {
 
     const ModeratorResponse = await Moderator.ModerateChat(Chat);
 
-    const StrippedJsonModeratorResponse = await Validator.stripCodeFences(ModeratorResponse)
 
-    if (StrippedJsonModeratorResponse) {
-      return new Response(StrippedJsonModeratorResponse)
+    if (ModeratorResponse) {
+      return new Response(JSON.stringify(ModeratorResponse), {
+        headers: { ...CORS_HEADERS, "Content-Type": "application/json" }
+      });
     }
 
     return new Response("Internal error", { status: 500, headers: CORS_HEADERS });
