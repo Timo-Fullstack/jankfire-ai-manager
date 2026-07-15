@@ -100,7 +100,7 @@ class Moderator {
       "Respond ONLY in this exact JSON shape, nothing else:\n" +
       '{ "violations": [ { "target": "<username>", "category": "<one of the rule categories>", "reason": "<specific explanation of what they did>", "ban_hours": <integer 1-72> } ], "needs_review": <-1 or 0> }';
 
-    const AIResponse = AiCaller.CallModerationModel(ModerationPrompt)
+    const AIResponse = await AiCaller.CallModerationModel(ModerationPrompt)
 
     return AIResponse;
 
@@ -129,11 +129,14 @@ export default {
 
     const ModeratorResponse = await Moderator.ModerateChat(Chat);
 
-    const StrippedJsonModeratorResponse = Validator.stripCodeFences(ModeratorResponse)
+    const StrippedJsonModeratorResponse = await Validator.stripCodeFences(ModeratorResponse)
 
-    return new Response(StrippedJsonModeratorResponse)
+    if (StrippedJsonModeratorResponse) {
+      return new Response(StrippedJsonModeratorResponse)
+    }
 
-    //return new Response("Internal error", { status: 500, headers: CORS_HEADERS });
+    return new Response("Internal error", { status: 500, headers: CORS_HEADERS });
+
   },
 };
 
