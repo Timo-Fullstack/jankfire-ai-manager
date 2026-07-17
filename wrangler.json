@@ -18,6 +18,11 @@
       "binding": "AccountsDB",
       "database_id": "6217a294-8c23-4108-ac54-524a38b70f41",
       "database_name": "jankfire-accounts"
+    },
+    {
+      "binding": "ModerationDB",
+      "database_id": "4c2b350a-3f78-41e4-ab99-cc28cba15783",
+      "database_name": "moderation-data"
     }
   ],
   "upload_source_maps": true
